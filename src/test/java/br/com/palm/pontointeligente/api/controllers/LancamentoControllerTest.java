@@ -89,7 +89,7 @@ public class LancamentoControllerTest {
 	}
 	
 	@Test
-	//@WithMockUser(username = "admin@admin.com", roles = {"ADMIN"})
+	@WithMockUser(username = "admin@admin.com", roles = {"ADMIN"})
 	public void testRemoverLancamento() throws Exception {
 		BDDMockito.given(this.lancamentoService.buscarPorId(Mockito.anyLong())).willReturn(Optional.of(new Lancamento()));
 
@@ -98,7 +98,7 @@ public class LancamentoControllerTest {
 				.andExpect(status().isOk());
 	}
 	
-	/*@Test
+	@Test
 	@WithMockUser
 	public void testRemoverLancamentoAcessoNegado() throws Exception {
 		BDDMockito.given(this.lancamentoService.buscarPorId(Mockito.anyLong())).willReturn(Optional.of(new Lancamento()));
@@ -106,7 +106,7 @@ public class LancamentoControllerTest {
 		mvc.perform(MockMvcRequestBuilders.delete(URL_BASE + ID_LANCAMENTO)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isForbidden());
-	}*/
+	}
 
 	private String obterJsonRequisicaoPost() throws JsonProcessingException {
 		LancamentoDto lancamentoDto = new LancamentoDto();
